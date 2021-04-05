@@ -1,12 +1,12 @@
-from django.contrib import admin
-from django.urls import path
 from django.conf.urls import url
+from django.contrib import admin
 
-from bookmark.views import *
+from bookmark.views import BookmarkLV, BookmarkDV
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
 
-    url(r'^bookmark/', BookmarkLV.as_view(), name='index'),
-    url(r'^bookmark/(?P<pk>\d+)/$'), BookmarkDV.as_view(), name='detail'),
+    # Class-based views for Bookmark app
+    url(r'^bookmark/$', BookmarkLV.as_view(), name='index'),
+    url(r'^bookmark/(?P<pk>\d+)/$', BookmarkDV.as_view(), name='detail'),
 ]
